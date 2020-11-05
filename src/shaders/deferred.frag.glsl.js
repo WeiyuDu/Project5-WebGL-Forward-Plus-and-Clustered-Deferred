@@ -112,17 +112,17 @@ export default function(params) {
       vec3 L = (light.position - v_position) / lightDistance;
 
       //bling phong
-      /*
+      
       vec3 view = normalize(u_camera_pos - v_position);
       vec3 H = normalize((view + L) / 2.0);
       float exp = 25.0;
       float specularIntensity = max(pow(dot(H, normal), exp), 0.0);
-      */
+      
       float lightIntensity = cubicGaussian(2.0 * lightDistance / light.radius);
       float lambertTerm = max(dot(L, normal), 0.0);
 
-      //fragColor += albedo * (lambertTerm + specularIntensity) * light.color * vec3(lightIntensity);
-      fragColor += albedo * lambertTerm * light.color * vec3(lightIntensity);
+      fragColor += albedo * (lambertTerm + specularIntensity) * light.color * vec3(lightIntensity);
+      //fragColor += albedo * lambertTerm * light.color * vec3(lightIntensity);
     }
 
     const vec3 ambientLight = vec3(0.025);
