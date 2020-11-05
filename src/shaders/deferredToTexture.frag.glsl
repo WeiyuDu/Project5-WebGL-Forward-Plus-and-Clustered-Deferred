@@ -18,7 +18,8 @@ vec3 applyNormalMap(vec3 geomnor, vec3 normap) {
 }
 
 void main() {
-    vec3 norm = normalize(applyNormalMap(v_normal, vec3(texture2D(u_normap, v_uv))));
+    //vec3 norm = normalize(applyNormalMap(v_normal, vec3(texture2D(u_normap, v_uv))));
+    vec3 norm = applyNormalMap(v_normal, vec3(texture2D(u_normap, v_uv)));
     vec3 col = vec3(texture2D(u_colmap, v_uv));
 
     // TODO: populate your g buffer
