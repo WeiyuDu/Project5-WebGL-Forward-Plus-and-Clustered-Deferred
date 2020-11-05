@@ -73,14 +73,14 @@ export default function(params) {
    
     vec3 v_position = texture2D(u_gbuffers[0], v_uv).xyz;
     vec3 albedo = texture2D(u_gbuffers[1], v_uv).xyz;
-    //vec3 normal = texture2D(u_gbuffers[2], v_uv).xyz;
-
+    vec3 normal = texture2D(u_gbuffers[2], v_uv).xyz;
+    /*
     vec3 normal = vec3(0.0);
     normal[0] = texture2D(u_gbuffers[0], v_uv).w;
     normal[1] = texture2D(u_gbuffers[1], v_uv).w;
     normal[2] = sqrt(1.0 - normal[0] * normal[0] - normal[1] * normal[1]);
     normal = normalize(normal);
-
+    */
     vec3 fragColor = vec3(0.0);
 
     int u_xSlices = ${params.u_xSlices};
